@@ -398,8 +398,8 @@
                     <div class="info-card">
                         <h3><i class="fas fa-phone"></i> Contact Us</h3>
                         <p><strong>Phone:</strong> (555) 123-4567</p>
-                        <p><strong>Email:</strong> reservations@bistroelegante.com</p>
-                        <p><strong>Address:</strong> 123 Gourmet Avenue, Culinary District</p>
+                        <p><strong>Email:</strong> Reservations@ROYAL.com</p>
+                        <p><strong>Address:</strong> ROYAL Restaurant , Palace Road, Jamnagar, Gujarat - 361008</p>
                     </div>
                 </div>
 

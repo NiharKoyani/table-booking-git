@@ -167,7 +167,7 @@
         }
 
         .item-image {
-            width: 120px;
+            width: 190px;
             height: 120px;
             object-fit: cover;
             flex-shrink: 0;
@@ -182,13 +182,13 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 10px;
+            margin-bottom: 2px;
         }
 
         .item-title {
             font-size: 1.3rem;
             color: var(--primary);
-            margin-right: 10px;
+            margin-right: 4px;
         }
 
         .item-price {
@@ -331,9 +331,9 @@
 <body>
     <section class="menu-hero">
         <div class="container">
-            <h1>Our Exquisite Menu</h1>
-            <p>Discover our carefully crafted dishes made with the finest ingredients and culinary expertise</p>
-            <a href="reservations.html" class="btn">Make a Reservation</a>
+            <h1>Our Menu</h1>
+            <p>See our tasty food and drinks, made with fresh ingredients and lots of care.</p>
+            <a href="reservations.html" class="btn">Book a Table</a>
         </div>
     </section>
 
@@ -353,52 +353,36 @@
     <section class="menu-section">
         <div class="container">
             <div class="section-title">
-                <h2>Our Culinary Offerings</h2>
+                <h2>What We Serve</h2>
             </div>
 
             <!-- Appetizers -->
             <div class="menu-category" data-category="appetizers">
-                <h3 class="category-title">Appetizers</h3>
+                <h3 class="category-title">Starters</h3>
                 <div class="menu-items">
                     <div class="menu-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/2014_Bruschetta_The_Larder_Chiang_Mai.jpg/1200px-2014_Bruschetta_The_Larder_Chiang_Mai.jpg" alt="Bruschetta" class="item-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_p11iUJCPbK-S_FfiHSSpOHHHvXzfw65FHg&s" alt="Paneer Tikka" class="item-image">
                         <div class="item-content">
                             <div class="item-header">
-                                <h4 class="item-title">Tomato Bruschetta</h4>
-                                <span class="item-price">$12</span>
+                                <h4 class="item-title">Paneer Tikka</h4>
+                                <span class="item-price">₹180</span>
                             </div>
-                            <p class="item-description">Toasted bread topped with fresh tomatoes, basil, garlic, and extra virgin olive oil</p>
+                            <p class="item-description">Grilled cottage cheese cubes marinated in Indian spices.</p>
                             <div class="item-tags">
                                 <span class="item-tag vegetarian">Vegetarian</span>
                             </div>
                         </div>
                     </div>
-
                     <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Calamari" class="item-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSTHwdRrONYs7dG4LiUtGZL_IvgBU1vVtwzg&s" alt="Samosa" class="item-image">
                         <div class="item-content">
                             <div class="item-header">
-                                <h4 class="item-title">Crispy Calamari</h4>
-                                <span class="item-price">$16</span>
+                                <h4 class="item-title">Samosa</h4>
+                                <span class="item-price">₹40</span>
                             </div>
-                            <p class="item-description">Tender squid rings lightly battered and fried, served with lemon aioli</p>
-                            <div class="item-tags">
-                                <span class="item-tag">Seafood</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="menu-item">
-                        <img src="https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2Farchive%2F3b432b41ce04c96a08d77befa42b9881a587a436" alt="Caprese Salad" class="item-image">
-                        <div class="item-content">
-                            <div class="item-header">
-                                <h4 class="item-title">Caprese Salad</h4>
-                                <span class="item-price">$14</span>
-                            </div>
-                            <p class="item-description">Fresh mozzarella, tomatoes, and basil drizzled with balsamic glaze</p>
+                            <p class="item-description">Crispy pastry filled with spicy potatoes and peas.</p>
                             <div class="item-tags">
                                 <span class="item-tag vegetarian">Vegetarian</span>
-                                <span class="item-tag gluten-free">Gluten Free</span>
                             </div>
                         </div>
                     </div>
@@ -407,46 +391,55 @@
 
             <!-- Main Courses -->
             <div class="menu-category" data-category="mains">
-                <h3 class="category-title">Main Courses</h3>
+                <h3 class="category-title">Main Dishes</h3>
                 <div class="menu-items">
                     <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Filet Mignon" class="item-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZaHS9Q4odVsxJlxW6ry7ubewoHvLWJh8SRDi-TFEJw0TMEgr6c3B96HYsAO7y00dDu_0&usqp=CAU" alt="Masala Dosa" class="item-image">
                         <div class="item-content">
                             <div class="item-header">
-                                <h4 class="item-title">Filet Mignon</h4>
-                                <span class="item-price">$38</span>
+                                <h4 class="item-title">Masala Dosa</h4>
+                                <span class="item-price">₹120</span>
                             </div>
-                            <p class="item-description">8oz tender beef filet with red wine reduction, served with garlic mashed potatoes and seasonal vegetables</p>
+                            <p class="item-description">Crispy rice crepe filled with spicy potato mix, served with chutney and sambar.</p>
                             <div class="item-tags">
-                                <span class="item-tag gluten-free">Gluten Free</span>
+                                <span class="item-tag vegetarian">Vegetarian</span>
                             </div>
                         </div>
                     </div>
-
                     <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" alt="Salmon" class="item-image">
+                        <img src="https://sitaramdiwanchand.com/blog/wp-content/uploads/2024/05/Comprehensive-Guide-to-Chole-Bhature-Side-Dishes.jpg" alt="Chole Kulche" class="item-image">
                         <div class="item-content">
                             <div class="item-header">
-                                <h4 class="item-title">Pan-Seared Salmon</h4>
-                                <span class="item-price">$32</span>
+                                <h4 class="item-title">Chole Kulche</h4>
+                                <span class="item-price">₹100</span>
                             </div>
-                            <p class="item-description">Atlantic salmon with lemon butter sauce, served with asparagus and wild rice</p>
+                            <p class="item-description">Soft bread served with spicy chickpea curry, onions, and lemon.</p>
                             <div class="item-tags">
-                                <span class="item-tag">Seafood</span>
-                                <span class="item-tag gluten-free">Gluten Free</span>
+                                <span class="item-tag vegetarian">Vegetarian</span>
                             </div>
                         </div>
                     </div>
-
-                    <div class="menu-item special-item">
-                        <div class="special-badge">Chef's Special</div>
-                        <img src="https://inkristaskitchen.com/wp-content/uploads/2022/02/mushroom-truffle-pasta-10-1.jpg" alt="Pasta" class="item-image">
+                    <div class="menu-item">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYwLSek8iYF8HRARFlDE8dOTAd2vvcvvX9ug&s" alt="Paneer Butter Masala" class="item-image">
                         <div class="item-content">
                             <div class="item-header">
-                                <h4 class="item-title">Truffle Mushroom Pasta</h4>
-                                <span class="item-price">$26</span>
+                                <h4 class="item-title">Paneer Butter Masala</h4>
+                                <span class="item-price">₹160</span>
                             </div>
-                            <p class="item-description">Handmade fettuccine with wild mushrooms, black truffle, and parmesan cream sauce</p>
+                            <p class="item-description">Paneer cubes in a creamy tomato and butter gravy.</p>
+                            <div class="item-tags">
+                                <span class="item-tag vegetarian">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQue-aIE_MoUy4ZGNDYMcpcgfDed0cbCo_O5w&s" alt="Dal Makhani" class="item-image">
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-title">Dal Makhani</h4>
+                                <span class="item-price">₹110</span>
+                            </div>
+                            <p class="item-description">Black lentils slow-cooked with butter and cream.</p>
                             <div class="item-tags">
                                 <span class="item-tag vegetarian">Vegetarian</span>
                             </div>
@@ -457,33 +450,26 @@
 
             <!-- Desserts -->
             <div class="menu-category" data-category="desserts">
-                <h3 class="category-title">Desserts</h3>
+                <h3 class="category-title">Sweets</h3>
                 <div class="menu-items">
                     <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80" alt="Chocolate Cake" class="item-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEfhmhk_a2F93uDrmp-aEskk9BLVX9dgX1SQ&s" alt="Gulab Jamun" class="item-image">
                         <div class="item-content">
                             <div class="item-header">
-                                <h4 class="item-title">Chocolate Lava Cake</h4>
-                                <span class="item-price">$10</span>
+                                <h4 class="item-title">Gulab Jamun</h4>
+                                <span class="item-price">₹70</span>
                             </div>
-                            <p class="item-description">Warm chocolate cake with a molten center, served with vanilla ice cream</p>
-                            <div class="item-tags">
-                                <span class="item-tag">Contains Nuts</span>
-                            </div>
+                            <p class="item-description">Soft sweet balls soaked in sugar syrup.</p>
                         </div>
                     </div>
-
                     <div class="menu-item">
-                        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1116&q=80" alt="Cheesecake" class="item-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSCPkJXsWwQ2ndpGsrC_JdLs7GUzLyyV9oPg&s  " alt="Rasgulla" class="item-image">
                         <div class="item-content">
                             <div class="item-header">
-                                <h4 class="item-title">New York Cheesecake</h4>
-                                <span class="item-price">$9</span>
+                                <h4 class="item-title">Rasgulla</h4>
+                                <span class="item-price">₹60</span>
                             </div>
-                            <p class="item-description">Classic creamy cheesecake with berry compote and whipped cream</p>
-                            <div class="item-tags">
-                                <span class="item-tag gluten-free">Gluten Free</span>
-                            </div>
+                            <p class="item-description">Soft spongy balls made from chenna, soaked in sugar syrup.</p>
                         </div>
                     </div>
                 </div>
@@ -491,37 +477,88 @@
 
             <!-- Drinks -->
             <div class="menu-category" data-category="drinks">
-                <h3 class="category-title">Beverages</h3>
+                <h3 class="category-title">Drinks</h3>
                 <div class="menu-items">
                     <div class="menu-item">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9x28VQnjEiDhN_LdU9WtVLiRqZEiMNZ2iXQ&s" alt="Lassi" class="item-image">
                         <div class="item-content">
                             <div class="item-header">
-                                <h4 class="item-title">House Red Wine</h4>
-                                <span class="item-price">$9/glass</span>
+                                <h4 class="item-title">Lassi</h4>
+                                <span class="item-price">₹60</span>
                             </div>
-                            <p class="item-description">Our selection of premium red wines from local vineyards</p>
+                            <p class="item-description">Refreshing yogurt drink, sweet or salty.</p>
                         </div>
                     </div>
-
                     <div class="menu-item">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTknjl9tTN4Jr0T53Tq71W0gUnk6GQjQmE8xQ&s" alt="Chaas" class="item-image">
                         <div class="item-content">
                             <div class="item-header">
-                                <h4 class="item-title">Craft Cocktails</h4>
-                                <span class="item-price">$14</span>
+                                <h4 class="item-title">Chaas</h4>
+                                <span class="item-price">₹40</span>
                             </div>
-                            <p class="item-description">Handcrafted cocktails using premium spirits and fresh ingredients</p>
+                            <p class="item-description">Cool buttermilk drink with spices and herbs.</p>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <div class="menu-item">
+            <!-- Chef's Specials (moved to last) -->
+            <div class="menu-category" data-category="specials">
+                <h3 class="category-title">Chef's Specials</h3>
+                <div class="menu-items">
+                    <div class="menu-item special-item">
+                        <div class="special-badge">Chef's Special</div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBhqV7gsGTQ6K62gRiPUl_hHWJv71zgFEXzQ&s" alt="Veg Pizza" class="item-image">
                         <div class="item-content">
                             <div class="item-header">
-                                <h4 class="item-title">Fresh Juices</h4>
-                                <span class="item-price">$6</span>
+                                <h4 class="item-title">Veg Pizza</h4>
+                                <span class="item-price">₹180</span>
                             </div>
-                            <p class="item-description">Seasonal selection of freshly squeezed juices</p>
+                            <p class="item-description">Pizza topped with fresh vegetables and cheese.</p>
                             <div class="item-tags">
-                                <span class="item-tag">Non-Alcoholic</span>
+                                <span class="item-tag vegetarian">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item special-item">
+                        <div class="special-badge">Chef's Special</div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbTAhYm6Ht3VkrSkz6SyuqqOxTO_d-wstHdw&s" alt="Veg Burger" class="item-image">
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-title">Veg Burger</h4>
+                                <span class="item-price">₹90</span>
+                            </div>
+                            <p class="item-description">Burger with a crispy vegetable patty, lettuce, and sauce.</p>
+                            <div class="item-tags">
+                                <span class="item-tag vegetarian">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item special-item">
+                        <div class="special-badge">Chef's Special</div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9gAPXlXH73q93C7Pbfz0nqaFj_QuyMwQKlg&s" alt="Pav Bhaji" class="item-image">
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-title">Pav Bhaji</h4>
+                                <span class="item-price">₹100</span>
+                            </div>
+                            <p class="item-description">Spicy mixed vegetable curry served with soft bread rolls.</p>
+                            <div class="item-tags">
+                                <span class="item-tag vegetarian">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item special-item">
+                        <div class="special-badge">Chef's Special</div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpjFGWN5et2F4-yvry10ykzf_gasFofsCWUg&s" alt="Veg Hakka Noodles" class="item-image">
+                        <div class="item-content">
+                            <div class="item-header">
+                                <h4 class="item-title">Veg Hakka Noodles</h4>
+                                <span class="item-price">₹120</span>
+                            </div>
+                            <p class="item-description">Stir-fried noodles with vegetables and sauces.</p>
+                            <div class="item-tags">
+                                <span class="item-tag vegetarian">Vegetarian</span>
                             </div>
                         </div>
                     </div>

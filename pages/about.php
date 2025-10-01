@@ -330,9 +330,9 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3>Our Story</h3>
-                    <p>Founded in 2005, Royal Restaurant has been serving exceptional cuisine in a sophisticated yet comfortable atmosphere. Our passion for culinary excellence and dedication to creating memorable dining experiences has made us a favorite among food enthusiasts.</p>
-                    <p>Our executive chef, Michael Anderson, brings over 20 years of international experience, crafting dishes that blend traditional techniques with modern innovation.</p>
-                    <p>We take pride in sourcing the finest local ingredients and supporting sustainable farming practices. Each dish tells a story of quality, creativity, and attention to detail.</p>
+                    <p>Royal Restaurant was started in 2005 by Chef Arjun Sharma, a passionate Indian chef from Ahmedabad, Gujarat. Inspired by the rich flavors and traditions of Indian cuisine, Chef Arjun wanted to create a place where families and friends could enjoy authentic Indian food in a warm, welcoming setting.</p>
+                    <p>From classic North Indian curries to popular street food, every dish is made with fresh ingredients and a touch of home-style love. Our team believes in serving food that reminds you of Indian festivals and family gatherings.</p>
+                    <p> ROYAL restaurant , Palace Road, Jamnagar, Gujarat - 361008</p>
                     <a href="#booking" class="btn">Book a Table</a>
                 </div>
                 <div class="about-image">

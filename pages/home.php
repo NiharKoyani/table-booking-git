@@ -32,37 +32,45 @@
         </section>
         
         <!-- Specialties Section -->
-        <section class="specialties">
-            <div class="section-title">
-                <h2>Our Specialties</h2>
-            </div>
-            <div class="specialties-grid">
-                <div class="specialty-card">
-                    <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80" alt="Grilled Salmon">
-                    <div class="specialty-content">
-                        <h3>Grilled Atlantic Salmon</h3>
-                        <p>Fresh salmon fillet with lemon butter sauce, served with seasonal vegetables and herb-infused quinoa.</p>
-                        <a href="#" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">View Details</a>
-                    </div>
-                </div>
-                <div class="specialty-card">
-                    <img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1415&q=80" alt="Beef Tenderloin">
-                    <div class="specialty-content">
-                        <h3>Prime Beef Tenderloin</h3>
-                        <p>8oz grass-fed beef tenderloin with red wine reduction, garlic mashed potatoes, and roasted asparagus.</p>
-                        <a href="#" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">View Details</a>
-                    </div>
-                </div>
-                <div class="specialty-card">
-                    <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Vegetarian Pasta">
-                    <div class="specialty-content">
-                        <h3>Truffle Mushroom Pasta</h3>
-                        <p>Handmade fettuccine with wild mushrooms, truffle oil, parmesan cheese, and fresh herbs.</p>
-                        <a href="#" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">View Details</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+<section class="specialties">
+  <div class="section-title">
+    <h2>Our Specialties</h2>
+  </div>
+  <div class="specialties-grid">
+
+    <!-- Paneer Tikka -->
+    <div class="specialty-card">
+      <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fG1hc2FsYSUyMGRvc2F8ZW58MHx8fHwxNjY2NzQ3NzY1&ixlib=rb-1.2.1&q=80&w=1080" alt="Paneer Tikka">
+      <div class="specialty-content">
+        <h3>Paneer Tikka</h3>
+        <p>Char-grilled cottage cheese cubes marinated with Indian spices, served with mint chutney and onions.</p>
+        <a href="#" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">View Details</a>
+      </div>
+    </div>  
+
+    <!-- Masala Dosa -->
+    <div class="specialty-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZaHS9Q4odVsxJlxW6ry7ubewoHvLWJh8SRDi-TFEJw0TMEgr6c3B96HYsAO7y00dDu_0&usqp=CAU" alt="Masala Dosa">
+      <div class="specialty-content">
+        <h3>Masala Dosa</h3>
+        <p>Crispy rice crepe stuffed with spiced potato filling, served with coconut chutney and sambar.</p>
+        <a href="#" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">View Details</a>
+      </div>
+    </div>
+
+    <!-- Chole Bhature -->
+    <div class="specialty-card">
+      <img src="https://sitaramdiwanchand.com/blog/wp-content/uploads/2024/05/Comprehensive-Guide-to-Chole-Bhature-Side-Dishes.jpg" alt="Chole Bhature">
+      <div class="specialty-content">
+        <h3>Chole Bhature</h3>
+        <p>Fluffy fried bread served with spiced chickpea curry, pickles, and onions — a North Indian favorite.</p>
+        <a href="#" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">View Details</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
         
         <!-- Testimonials Section -->
         <section class="testimonials">

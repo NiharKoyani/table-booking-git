@@ -12,7 +12,7 @@
                 </div>
                 <div class="footer-column">
                     <h3>Contact Info</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Gourmet Avenue, Culinary District</p>
+                    <p><i class="fas fa-map-marker-alt"></i>  ROYAL restaurant , Palace Road, Jamnagar, Gujarat - 361008</p>
                     <p><i class="fas fa-phone"></i> (555) 123-4567</p>
                     <p><i class="fas fa-envelope"></i> info@bistroelegante.com</p>
                 </div>

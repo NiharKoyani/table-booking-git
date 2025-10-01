@@ -21,7 +21,7 @@ if(isset($_GET['booking-table'])){
 <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <i class="fas fa-utensils"></i>
+                <img src="img/logo1.jpg" alt="Logo" class="logo">
                 <h1>Royal Restaurant</h1>
             </div>
             

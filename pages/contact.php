@@ -481,9 +481,9 @@
                 <div class="contact-info">
                     <div class="info-card">
                         <h3><i class="fas fa-map-marker-alt"></i> Our Location</h3>
-                        <p><i class="fas fa-location-dot"></i> 123 Gourmet Avenue, Culinary District, NY 10001</p>
+                        <p><i class="fas fa-location-dot"></i> ROYAL restaurant , Palace Road, Jamnagar, Gujarat - 361008</p>
                         <p><i class="fas fa-phone"></i> (555) 123-4567</p>
-                        <p><i class="fas fa-envelope"></i> info@bistroelegante.com</p>
+                        <p><i class="fas fa-envelope"></i> royal_info@123.com</p>
                     </div>
                     
                     <div class="info-card">
@@ -521,8 +521,8 @@
                 <div class="map-placeholder">
                     <i class="fas fa-map"></i>
                     <h3>Our Location</h3>
-                    <p>123 Gourmet Avenue, Culinary District, NY 10001</p>
-                    <a href="https://maps.google.com/?q=123+Gourmet+Avenue,+Culinary+District,+NY+10001" target="_blank" class="btn" style="margin-top: 20px;">Get Directions</a>
+                    <p>ROYAL restaurant , Palace Road, Jamnagar, Gujarat - 361008</p>
+                    <a href="https://maps.app.goo.gl/VNK61RtgEcWq3XoVA" target="_blank" class="btn" style="margin-top: 20px;">Get Directions</a>
                 </div>
             </div>
         </div>
