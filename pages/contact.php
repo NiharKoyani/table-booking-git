@@ -433,14 +433,13 @@
                         <div class="form-group">
                             <label for="phone">Phone Number (Optional)</label>
                             <input
-  type="tel"
-  id="phone"
-  class="form-control"
-  placeholder="+91 9876543210"
-  pattern="^\+91[6-9]\d{9}$"
-  title="Enter a valid Indian phone number with country code, e.g. +91 9876543210"
->
-
+                              type="tel"
+                              id="phone"
+                              class="form-control"
+                              placeholder="+91 9876543210"
+                              pattern="^\+91[6-9]\d{9}$"
+                              title="Enter a valid Indian phone number with country code, e.g. +91 9876543210"
+                            >
                         </div>
                         <div class="form-group">
                             <label for="subject">Subject</label>
