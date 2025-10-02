@@ -5,29 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Royal Restaurant | Table Reservations</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/booking-form.css">
+    <link rel="stylesheet" href="./css/universal.css">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #2c3e50;
-            --secondary: #34495e;
-            --accent: #e67e22;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --text: #333;
-            --text-light: #7f8c8d;
-        }
-
         body {
             background-color: #f9f9f9;
             color: var(--text);
             line-height: 1.6;
-        }
+        }   
 
         .container {
             max-width: 1200px;
@@ -349,60 +335,7 @@
             </div>
             <div class="booking-form">
                 <h3 class="form-title">Reserve Your Table</h3>
-                <form id="bookingForm">
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input title="Enter a valid Indian phone number with country code, e.g. +91 9876543210" type="tel" id="phone" pattern="^\+91[6-9]\d{9}$" class="form-control" placeholder="Enter your phone number" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="date">Date</label>
-                            <input type="date" id="date" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="time">Time</label>
-                            <input type="time" id="time" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="guests">Number of Guests</label>
-                            <select id="guests" class="form-control" required>
-                                <option value="" disabled selected>Select number of guests</option>
-                                <option value="1">1 Person</option>
-                                <option value="2">2 People</option>
-                                <option value="3">3 People</option>
-                                <option value="4">4 People</option>
-                                <option value="5">5 People</option>
-                                <option value="6">6 People</option>
-                                <option value="7">7+ People</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="occasion">Special Occasion (Optional)</label>
-                            <select id="occasion" class="form-control">
-                                <option value="" selected>No special occasion</option>
-                                <option value="birthday">Birthday</option>
-                                <option value="anniversary">Anniversary</option>
-                                <option value="business">Business Dinner</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="requests">Special Requests (Optional)</label>
-                            <textarea id="requests" class="form-control" rows="3" placeholder="Any special requests?"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-submit">
-                        <button type="submit" class="btn">Book Now</button>
-                    </div>
-                </form>
+                    <?php include('./util/booking-form.php')?>
             </div>
         </div>
     </section>

@@ -178,16 +178,31 @@
             margin-left: 4px;
         }
 
+        /* icons */
+
         .input-with-icon {
             position: relative;
+            display: flex;
+            align-items: center;
         }
 
-        .input-with-icon i {
+        .input-with-icon .left-icon {
             position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-light);
+            left: 13px;
+            color: #888;
+        }
+        
+        .input-with-icon .right-icon {
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+            color: #888;
+        }
+        
+        .input-with-icon input {
+            padding-left: 35px;   /* space for lock icon */
+            padding-right: 35px;  /* space for eye icon */
+            width: 100%;
         }
 
         .form-control {
@@ -358,7 +373,6 @@
             padding: 12px 15px;
             border-radius: 8px;
             margin-bottom: 20px;
-            display: none;
             align-items: center;
             gap: 10px;
             border-left: 4px solid var(--error);
@@ -452,6 +466,22 @@
             animation-delay: -10s;
         }
 
+        .password-strength {
+          width: 100%;
+          height: 8px;
+          background: #ddd;
+          border-radius: 5px;
+          margin-top: 5px;
+          overflow: hidden;
+        }
+
+        .password-strength-bar {
+          height: 100%;
+          width: 0;
+          background: red;
+          transition: width 0.3s ease, background 0.3s ease;
+        }
+
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -527,9 +557,6 @@
         }
     </style>
 </head>
-<?php
-session_start();
-?>
 <body>
     <div class="floating-elements">
         <div class="floating-element"></div>
@@ -560,24 +587,31 @@ session_start();
                     <p>Join our community of food enthusiasts</p>
                 </div>
                 
-                <?php
-                $emailError = $_SESSION['registration_error'];
-                $phoneNumberError = $_SESSION['registration_error_phoneNumber'];
+<?php
+session_start();
 
-                if(isset($_SESSION['registration_error']) || isset($_SESSION['registration_error_phoneNumber'])){
-                echo `<div class="error-message" id="errorMessage">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <span id="errorText">Please fix the errors below to continue.</span>
-                    <li></li>
-                </div>`;
-                echo $emailError ?  "<li>$emailError</li>": '';
-                echo  $phoneNumberError ?  "<li> $phoneNumberError</li>": '';
+if (!empty($_SESSION['registration_error']) || !empty($_SESSION['registration_error_phoneNumber'])) {
+    echo '<div class="error-message" id="errorMessage">
+            <i class="fas fa-exclamation-circle"></i>
+            <span id="errorText">Please fix the errors below to continue.</span>
+            <ul>';
+    
+    if (!empty($_SESSION['registration_error'])) {
+        echo "<li>{$_SESSION['registration_error']}</li>";
+    }
+    if (!empty($_SESSION['registration_error_phoneNumber'])) {
+        echo "<li>{$_SESSION['registration_error_phoneNumber']}</li>";
+    }
 
-                session_destroy('registration_error');
-                session_destroy('registration_error_phoneNumber');
-                }
-                
-                ?>
+    echo '</ul></div>';
+
+    // Clear them so they don’t show on refresh
+    unset($_SESSION['registration_error']);
+    unset($_SESSION['registration_error_phoneNumber']);
+}
+?>
+
+
                 
                 <div class="success-message" id="successMessage">
                     <i class="fas fa-check-circle"></i>
@@ -589,7 +623,7 @@ session_start();
                         <div class="form-group">
                             <label for="firstName" class="required">First Name</label>
                             <div class="input-with-icon">
-                                <i class="fas fa-user"></i>
+                                <i class="fas fa-user left-icon"></i>
                                 <input type="text" name="firstName" class="form-control" placeholder="Enter your first name" required>
                             </div>
                             <div class="validation-message" id="firstNameError"></div>
@@ -598,7 +632,7 @@ session_start();
                         <div class="form-group">
                             <label for="lastName" class="required">Last Name</label>
                             <div class="input-with-icon">
-                                <i class="fas fa-user"></i>
+                                <i class="fas fa-user left-icon"></i>
                                 <input type="text" name="lastName" class="form-control" placeholder="Enter your last name" required>
                             </div>
                             <div class="validation-message" id="lastNameError"></div>
@@ -608,7 +642,7 @@ session_start();
                     <div class="form-group">
                         <label for="email" class="required">Email Address</label>
                         <div class="input-with-icon">
-                            <i class="fas fa-envelope"></i>
+                            <i class="fas fa-envelope left-icon"></i>
                             <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
                         </div>
                         <div class="validation-message" id="emailError"></div>
@@ -617,7 +651,7 @@ session_start();
                     <div class="form-group">
                         <label for="phone" class="required">Phone Number</label>
                         <div class="input-with-icon">
-                            <i class="fas fa-phone"></i>
+                            <i class="fas fa-phone left-icon"></i>
                             <input type="tel" name="phone" class="form-control" placeholder="Enter your phone number" pattern="^\+91[6-9]\d{9}$"
                               title="Enter a valid Indian phone number with country code, e.g. +91 9876543210"
                               required>
@@ -628,8 +662,9 @@ session_start();
                     <div class="form-group">
                         <label for="password" class="required">Password</label>
                         <div class="input-with-icon">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" id="password" class="form-control" placeholder="Create a password" required>
+                            <i class="fas fa-lock left-icon"></i>
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Create a password" required>
+                            <i class="fas fa-eye toggle-password right-icon" id="togglePassword"></i>
                         </div>
                         <div class="password-strength">
                             <div class="password-strength-bar" id="passwordStrength"></div>
@@ -640,8 +675,8 @@ session_start();
                     <div class="form-group">
                         <label for="confirmPassword" class="required">Confirm Password</label>
                         <div class="input-with-icon">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm your password" required>
+                            <i class="fas fa-lock left-icon"></i>
+                            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Confirm your password" required>
                         </div>
                         <div class="validation-message" id="confirmPasswordError"></div>
                         <div id="passwordMatch" class="password-match"></div>
@@ -650,32 +685,23 @@ session_start();
                     <div class="form-group">
                         <label for="birthdate">Date of Birth</label>
                         <div class="input-with-icon">
-                            <i class="fas fa-calendar"></i>
-                            <input type="date" id="birthdate" class="form-control">
+                            <i class="fas fa-calendar left-icon"></i>
+                            <input type="date" name="birthdate" class="form-control">
                         </div>
                     </div>
                     
                     <div class="form-group full-width">
                         <div class="terms-agreement">
-                            <input type="checkbox" id="terms" required>
+                            <input type="checkbox" name="terms" id="terms" required>
                             <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
                         </div>
                         <div class="validation-message" id="termsError"></div>
                     </div>
                     
-                    <div class="form-group full-width">
-                        <div class="terms-agreement">
-                            <input type="checkbox" id="newsletter">
-                            <label for="newsletter">Send me exclusive offers, updates, and dining tips</label>
-                        </div>
-                    </div>
-                    
                     <button type="submit" class="btn" id="signupBtn">Create Account</button>
                     
-                    <div class="divider">or sign up with</div>
-                    
                     <div class="login-link">
-                        Already have an account? <a href="login.html">Sign in here</a>
+                        Already have an account? <a href="login.php">Sign in here</a>
                     </div>
                 </form>
             </div>
@@ -707,14 +733,61 @@ session_start();
                     return;
                 }
 
-                if (passwordInput.value.trim() < 6) {
-                    passwordMatch.innerHTML = 'Passwords must be of 6 digits';
+                if (passwordInput.value.trim().length < 6) {
+                    passwordMatch.innerHTML = 'Password must be at least 6 characters';
                     passwordMatch.style.color = "var(--error)";
                     return;
                 }
-
                 // If all validations pass, submit the form
                 this.submit();
+            });
+
+            const passwordInput = document.getElementById('password');
+            const strengthBar = document.getElementById("passwordStrength");
+
+            passwordInput.addEventListener("input", () => {
+              const password = passwordInput.value.trim();
+              let strength = 0;
+            
+              // Rules for strength
+              if (password.length >= 6) strength++;          // min length
+              if (/[A-Z]/.test(password)) strength++;        // uppercase
+              if (/[0-9]/.test(password)) strength++;        // numbers
+              if (/[@$!%*?&#]/.test(password)) strength++;   // special characters
+            
+              // Update progress bar
+              switch (strength) {
+                case 0:
+                  strengthBar.style.width = "0%";
+                  strengthBar.style.background = "transparent";
+                  break;
+                case 1:
+                  strengthBar.style.width = "25%";
+                  strengthBar.style.background = "red";
+                  break;
+                case 2:
+                  strengthBar.style.width = "50%";
+                  strengthBar.style.background = "orange";
+                  break;
+                case 3:
+                  strengthBar.style.width = "75%";
+                  strengthBar.style.background = "blue";
+                  break;
+                case 4:
+                  strengthBar.style.width = "100%";
+                  strengthBar.style.background = "green";
+                  break;
+              }
+            });
+
+            const togglePassword = document.getElementById("togglePassword");
+
+            togglePassword.addEventListener("click", () => {
+                const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+                passwordInput.setAttribute("type", type);
+            
+                // Toggle icon (eye ↔ eye-slash)
+                togglePassword.classList.toggle("fa-eye-slash");
             });
     </script>
 </body>

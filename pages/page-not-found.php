@@ -5,25 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found | Bistro Elegante</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/universal.css">
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #2c3e50;
-            --secondary: #34495e;
-            --accent: #e67e22;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --text: #333;
-            --text-light: #7f8c8d;
-            --success: #27ae60;
-        }
-
         body {
             background-color: #f9f9f9;
             color: var(--text);
@@ -90,7 +74,7 @@
 
         .error-title {
             font-size: 3rem;
-            color: var(--primary);
+            color: var(--accent);
             margin-bottom: 20px;
         }
 
@@ -132,12 +116,12 @@
 
         .btn-outline {
             background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
+            border: 2px solid var(--accent);
+            color: var(--accent);
         }
 
         .btn-outline:hover {
-            background: var(--primary);
+            background: var(--accent);
             color: white;
         }
 
@@ -205,7 +189,7 @@
 
         .quick-links h3 {
             margin-bottom: 20px;
-            color: var(--primary);
+            color: var(--accent);
         }
 
         .links-grid {

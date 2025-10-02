@@ -8,32 +8,18 @@
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/univarsal.css">
     <style>
         /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #d35400;
-            --secondary: #e67e22;
-            --accent: #f39c12;
-            --dark: #2c3e50;
-            --light: #ecf0f1;
-            --text: #333;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-            --radius: 10px;
-        }
-
         body {
             background-color: #f9f9f9;
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        a{
+            text-decoration: none;
         }
 
         /* Animations */
@@ -106,6 +92,7 @@
             }
         }
     </style>
+
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -182,15 +169,6 @@
         // Initial check
         checkVisibility();
 
-        // Simple form validation for future forms
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                // In a real application, you would handle form submission here
-                alert('Thank you for your message! We will get back to you soon.');
-                this.reset();
-            });
-        });
     </script>
 </body>
 </html>

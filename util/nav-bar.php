@@ -21,8 +21,8 @@ if(isset($_GET['booking-table'])){
 <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="img/logo1.jpg" alt="Logo" class="logo">
-                <h1>Royal Restaurant</h1>
+                <a href="./"><img src="assert/img/royal-restaurant-logo.jpg" alt="Logo" class="logo"></a>
+                <a href="./"><h1>Royal Restaurant</h1></a>
             </div>
             
             <div class="menu-toggle">

@@ -5,24 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Royal Restaurant | Table Reservations</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #2c3e50;
-            --secondary: #34495e;
-            --accent: #e67e22;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --text: #333;
-            --text-light: #7f8c8d;
-            --success: #27ae60;
-        }
+ <link rel="stylesheet" href="./css/booking-form.css">
+    <link rel="stylesheet" href="./css/universal.css">
+ 
+ <style>
 
         body {
             background-color: #f9f9f9;
@@ -30,6 +16,7 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
+        
 
         .container {
             max-width: 1200px;
@@ -205,52 +192,6 @@
             color: var(--text-light);
         }
 
-        /* Table Selection */
-        .table-selection {
-            border-top: 1px solid #eee;
-        }
-
-        .table-selection h4 {
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        .table-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .table-option {
-            flex: 1;
-            min-width: 120px;
-            text-align: center;
-            padding: 10px;
-            border: 2px solid #ddd;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .table-option:hover {
-            border-color: var(--accent);
-        }
-
-        .table-option.selected {
-            border-color: var(--accent);
-            background-color: rgba(230, 126, 34, 0.1);
-        }
-
-        .table-icon {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-            color: var(--secondary);
-        }
-
-        .table-option.selected .table-icon {
-            color: var(--accent);
-        }
-
         /* Confirmation Section */
         .confirmation {
             display: none;
@@ -405,91 +346,7 @@
 
                 <div class="booking-form">
                     <h3 class="form-title">Reserve Your Table</h3>
-                    <form id="bookingForm">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="name">Full Name<span>*</span></label>
-                                <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address<span>*</span></label>
-                                <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone Number<span>*</span></label>
-                                <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="date">Date<span>*</span></label>
-                                <input type="date" id="date" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="time">Time<span>*</span></label>
-                                <input type="time" id="time" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="guests">Number of Guests<span>*</span></label>
-                                <select id="guests" class="form-control" required>
-                                    <option value="" disabled selected>Select number of guests</option>
-                                    <option value="1">1 Person</option>
-                                    <option value="2">2 People</option>
-                                    <option value="3">3 People</option>
-                                    <option value="4">4 People</option>
-                                    <option value="5">5 People</option>
-                                    <option value="6">6 People</option>
-                                    <option value="7">7+ People</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="occasion">Special Occasion (Optional)</label>
-                                <select id="occasion" class="form-control">
-                                    <option value="" selected>No special occasion</option>
-                                    <option value="birthday">Birthday</option>
-                                    <option value="anniversary">Anniversary</option>
-                                    <option value="business">Business Dinner</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="requests">Special Requests (Optional)</label>
-                                <textarea id="requests" class="form-control" rows="3" placeholder="Any special requests?"></textarea>
-                            </div>
-                        </div>
-                        
-                        <section id="Preference" class="table-selection">
-                            <h4>Table Preference</h4>
-                            <div class="table-options">
-                                <div class="table-option" data-type="standard">
-                                    <div class="table-icon">
-                                        <i class="fas fa-chair"></i>
-                                    </div>
-                                    <option>Standard</option>
-                                </div>
-                                <div class="table-option" data-type="booth">
-                                    <div class="table-icon">
-                                        <i class="fas fa-couch"></i>
-                                    </div>
-                                    <option>Booth</option>
-                                </div>
-                                <div class="table-option" data-type="window">
-                                    <div class="table-icon">
-                                        <i class="fas fa-window-restore"></i>
-                                    </div>
-                                    <option>Window</option>
-                                </div>
-                                <div class="table-option" data-type="private">
-                                    <div class="table-icon">
-                                        <i class="fas fa-door-closed"></i>
-                                    </div>
-                                    <option>Private</option>
-                                </div>
-                            </div>
-                        </section>
-                        
-                        <div class="form-submit">
-                            <button type="submit" class="btn">Book Now</button>
-                        </div>
-                    </form>
+                    <?php include('./util/booking-form.php')?>
                 </div>
             </div>
         </div>

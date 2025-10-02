@@ -1,4 +1,9 @@
 /* Home Page */
+
+.logo h1 {
+  color: var(--accent);
+}
+
 .page {
   min-height: 100vh;
   padding-top: 80px;
@@ -43,7 +48,7 @@
 
 .btn {
   display: inline-block;
-  background: var(--primary);
+  background: var(--accent);
   color: white;
   padding: 15px 35px;
   border: none;
@@ -107,7 +112,7 @@
   position: absolute;
   width: 80px;
   height: 4px;
-  background: var(--primary);
+  background: var(--accent);
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -147,7 +152,7 @@
   left: 0;
   width: 100%;
   height: 5px;
-  background: var(--primary);
+  background: var(--accent);
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
@@ -163,7 +168,7 @@
 
 .feature-card i {
   font-size: 3rem;
-  color: var(--primary);
+  color: var(--accent);
   margin-bottom: 20px;
   transition: var(--transition);
 }

@@ -5,30 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Royal Restaurant | Contact Us</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/universal.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #2c3e50;
-            --secondary: #34495e;
-            --accent: #e67e22;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --text: #333;
-            --text-light: #7f8c8d;
-            --success: #27ae60;
-        }
 
         body {
             background-color: #f9f9f9;
             color: var(--text);
             line-height: 1.6;
         }
+        
 
         .container {
             max-width: 1200px;
@@ -419,6 +404,7 @@
     </style>
 </head>
 <body>
+    <div class="page">
     <section class="contact-hero">
         <div class="container">
             <h1>Get In Touch</h1>
@@ -453,7 +439,6 @@
   placeholder="+91 9876543210"
   pattern="^\+91[6-9]\d{9}$"
   title="Enter a valid Indian phone number with country code, e.g. +91 9876543210"
-  required
 >
 
                         </div>
@@ -528,6 +513,7 @@
         </div>
     </section>
 
+    <!-- F. A. Q -->
     <section class="faq-section">
         <div class="container">
             <div class="section-title">
@@ -586,14 +572,14 @@
             </div>
         </div>
     </section>
-
-    <div class="confirmation" id="confirmation">
+<!-- //class name = fadeInUp 0.8s ease -->
+    <div class="confirmation" id="confirmation"> 
         <i class="fas fa-check-circle"></i>
         <h2>Message Sent Successfully!</h2>
         <p>Thank you for contacting Royal Restaurant. We've received your message and will respond within 24 hours.</p>
         <button class="btn" id="newMessage">Send Another Message</button>
     </div>
-
+</div>
     <script>
         // Contact form submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
@@ -613,9 +599,9 @@
             // Add some animation to the confirmation
             const confirmation = document.getElementById('confirmation');
             confirmation.style.animation = 'none';
-            setTimeout(() => {
-                confirmation.style.animation = 'fadeInUp 0.8s ease';
-            }, 10);
+            // setTimeout(() => {
+            confirmation.style.animation = 'fadeInUp 0.8s ease';
+            // }, 10);
         });
 
         // New message button

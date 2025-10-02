@@ -487,7 +487,7 @@
                     <button type="submit" class="btn" name="loginBtn">Sign In</button>
                     
                     <div class="signup-link">
-                        Don't have an account? <a href="signup.html">Sign up here</a>
+                        Don't have an account? <a href="signup.php">Sign up here</a>
                     </div>
                 </form>
             </div>

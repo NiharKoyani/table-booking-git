@@ -1,23 +1,6 @@
+    <link rel="stylesheet" href="./css/universal.css">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #2c3e50;
-            --secondary: #34495e;
-            --accent: #e67e22;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --text: #333;
-            --text-light: #7f8c8d;
-            --success: #27ae60;
-        }
-
         body {
             background-color: #f9f9f9;
             color: var(--text);
@@ -329,6 +312,7 @@
     </style>
 </head>
 <body>
+    <div class="page">
     <section class="menu-hero">
         <div class="container">
             <h1>Our Menu</h1>
@@ -566,7 +550,7 @@
             </div>
         </div>
     </section>
-
+</div>
     <script>
         // Menu filtering functionality
         document.addEventListener('DOMContentLoaded', function() {

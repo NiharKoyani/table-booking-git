@@ -1,21 +1,32 @@
 <?php
-if (isset($_POST['submit'])) {
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+session_start();
+
+// Force flush errors before redirect
+ob_implicit_flush(true);
+
+include('./db.php');
+
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Validate and sanitize input data
-        $firstName = htmlspecialchars(trim($_POST['firstName']));
-        $lastName = htmlspecialchars(trim($_POST['lastName']));
-        $phone = htmlspecialchars(trim($_POST['phone']));
-        $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
-        $password = trim($_POST['password']);
-        $confirmPassword = htmlspecialchars(trim($_POST['confirmPassword']));
+        $first_name   = htmlspecialchars(trim($_POST['firstName']));
+        $last_name    = htmlspecialchars(trim($_POST['lastName']));
+        $phone_number = htmlspecialchars(trim($_POST['phone']));
+        $email        = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+        $birthdate    = htmlspecialchars(trim($_POST['birthdate']));
+        $password     = $_POST['password'];
+        $confirmPassword = $_POST['confirmPassword'];
 
         // Validate email
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             die("Invalid email format");
         }
 
-        // Check if passwords match (client-side should handle this, but double-check)
-        if ($_POST['password'] !== $_POST['confirmPassword']) {
+        // Check if passwords match
+        if ($password !== $confirmPassword) {
             die("Passwords do not match");
         }
 
@@ -27,42 +38,40 @@ if (isset($_POST['submit'])) {
         // Hash the password
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        // Check if email or mobile already exists
-        $checkStmt = $conn->prepare("SELECT email, mobile_number FROM shopkeeper WHERE email = ? OR mobile_number = ?");
-        $checkStmt->bind_param("ss", $email, $mobile);
+        // Check if email or phone already exists
+        $checkStmt = $conn->prepare("SELECT email, phone_number FROM users WHERE email = ? OR phone_number = ?");
+        $checkStmt->bind_param("ss", $email, $phone_number);
         $checkStmt->execute();
         $checkStmt->store_result();
 
         if ($checkStmt->num_rows > 0) {
-            // Fetch existing values
             $checkStmt->bind_result($existingEmail, $existingMobile);
             $checkStmt->fetch();
 
             if ($existingEmail === $email) {
                 $_SESSION['registration_error'] = "This e-mail is already registered.";
             }
-            if ($existingMobile === $mobile) {
+            if ($existingMobile === $phone_number) {
                 $_SESSION['registration_error_phoneNumber'] = "This mobile number is already registered.";
             }
+
             header("Location: ../signup.php");
             exit();
         }
         $checkStmt->close();
 
-        // Prepare and bind
-        $stmt = $conn->prepare("INSERT INTO shopkeeper (shop_name, owner_name, mobile_number, email, password, shop_location, created_at, Status) VALUES (?, ?, ?, ?, ?, ?, NOW(),0)");
-        $stmt->bind_param("ssssss", $shopName, $ownerName, $mobile, $email, $hashedPassword, $shopAddress);
+        // Insert new user
+        $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, phone_number, email, password, birthdate) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssss", $first_name, $last_name, $phone_number, $email, $hashedPassword, $birthdate);
 
-        // Execute the statement
         if ($stmt->execute()) {
-            // Registration successful - redirect to success page
-            header("Location: ../registration_sucess.php");
+            header("Location: ../");
             exit();
         } else {
             echo "Error: " . $stmt->error;
         }
+
+        $stmt->close();
     }
-    // Close statement
-    $stmt->close();
-}
-    ?>
+
+?>

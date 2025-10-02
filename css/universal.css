@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+  --primary: #2c3e50;
+  --secondary: #34495e;
+  --accent: #e67e22;
+  --light: #ecf0f1;
+  --dark: #2c3e50;
+  --text: #333;
+  --text-light: #7f8c8d;
+  --success: #27ae60;
+  --warning: #f39c12;
+  --error: #e74c3c;
+  --sidebar: #2c3e50;
+  --sidebar-hover: #34495e;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  --radius: 10px;
+}
