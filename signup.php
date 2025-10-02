@@ -616,7 +616,6 @@ if (!empty($_SESSION['registration_error']) || !empty($_SESSION['registration_er
     unset($_SESSION['registration_error_phoneNumber']);
 }
 ?>
->>>>>>> Stashed changes
 <?php
 session_start();
 
