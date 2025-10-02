@@ -435,7 +435,7 @@
             <div class="contact-container">
                 <div class="contact-form" id="contact-form">
                     <h3 class="form-title">Send Us a Message</h3>
-                    <form id="contactForm">
+                    <form action="./server/inq.php" id="contactForm">
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
