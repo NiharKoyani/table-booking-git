@@ -587,12 +587,6 @@
                     <h2>Create Account</h2>
                     <p>Join our community of food enthusiasts</p>
                 </div>
-                
-<<<<<<< Updated upstream
-                <?php
-                $emailError = $_SESSION['registration_error'];
-                $phoneNumberError = $_SESSION['registration_error_phoneNumber'];
-=======
 <?php
 
 
