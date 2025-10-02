@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    <?php session_start();?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -586,7 +587,29 @@
                     <h2>Create Account</h2>
                     <p>Join our community of food enthusiasts</p>
                 </div>
-                
+<?php
+
+
+if (!empty($_SESSION['registration_error']) || !empty($_SESSION['registration_error_phoneNumber'])) {
+    echo '<div class="error-message" id="errorMessage">
+            <i class="fas fa-exclamation-circle"></i>
+            <span id="errorText">Please fix the errors below to continue.</span>
+            <ul>';
+    
+    if (!empty($_SESSION['registration_error'])) {
+        echo "<li>{$_SESSION['registration_error']}</li>";
+    }
+    if (!empty($_SESSION['registration_error_phoneNumber'])) {
+        echo "<li>{$_SESSION['registration_error_phoneNumber']}</li>";
+    }
+
+    echo '</ul></div>';
+
+    // Clear them so they don’t show on refresh
+    unset($_SESSION['registration_error']);
+    unset($_SESSION['registration_error_phoneNumber']);
+}
+?>
 <?php
 session_start();
 
