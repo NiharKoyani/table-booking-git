@@ -30,3 +30,22 @@ CREATE TABLE enquiry (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
+
+3. reservation
+
+```
+CREATE TABLE reservation (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone_number VARCHAR(15) NOT NULL,
+    reservation_date DATE NOT NULL,
+    reservation_time TIME NOT NULL,
+    number_of_guests INT NOT NULL,
+    special_occasion VARCHAR(100),
+    special_requests TEXT,
+    table_preference VARCHAR(50),
+    status VARCHAR(20) DEFAULT 'confirmed',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
