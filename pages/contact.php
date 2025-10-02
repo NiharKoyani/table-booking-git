@@ -421,20 +421,21 @@
             <div class="contact-container">
                 <div class="contact-form" id="contact-form">
                     <h3 class="form-title">Send Us a Message</h3>
-                    <form action="./server/inq.php" id="contactForm">
+                    <form action="./server/inq.php" method="post" id="contactForm">
                         <div class="form-group">
                             <label for="name">Full Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email Address</label>
-                            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number (Optional)</label>
                             <input
                               type="tel"
                               id="phone"
+                              name="phone"
                               class="form-control"
                               placeholder="+91 9876543210"
                               pattern="^\+91[6-9]\d{9}$"
@@ -443,7 +444,7 @@
                         </div>
                         <div class="form-group">
                             <label for="subject">Subject</label>
-                            <select id="subject" class="form-control" required>
+                            <select id="subject" name="subject" class="form-control" required>
                                 <option value="" disabled selected>Select a subject</option>
                                 <option value="reservation">Reservation Inquiry</option>
                                 <option value="feedback">Feedback</option>
@@ -454,7 +455,7 @@
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" class="form-control" placeholder="How can we help you?" required></textarea>
+                            <textarea id="message" name="message" class="form-control" placeholder="How can we help you?" required></textarea>
                         </div>
                         <div class="form-submit">
                             <button type="submit" class="btn">Send Message</button>
@@ -580,28 +581,7 @@
     </div>
 </div>
     <script>
-        // Contact form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            
-            // Hide form and show confirmation
-            document.querySelector('.contact-section').style.display = 'none';
-            document.querySelector('.map-section').style.display = 'none';
-            document.querySelector('.faq-section').style.display = 'none';
-            document.getElementById('confirmation').style.display = 'block';
-            
-            // Add some animation to the confirmation
-            const confirmation = document.getElementById('confirmation');
-            confirmation.style.animation = 'none';
-            // setTimeout(() => {
-            confirmation.style.animation = 'fadeInUp 0.8s ease';
-            // }, 10);
-        });
+        // (Removed JS that prevented form submission to allow PHP to process the form)
 
         // New message button
         document.getElementById('newMessage').addEventListener('click', function() {
