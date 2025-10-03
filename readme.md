@@ -1,51 +1,99 @@
 DataBase Name:
+`royal-restaurant`
 
 Tables Sql:
 
 1. users
 
 ```
-CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(50) NOT NULL,
-    last_name VARCHAR(50) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    phone_number VARCHAR(15) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    birthdate DATE NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE `users` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `first_name` VARCHAR(100) NOT NULL,
+  `last_name` VARCHAR(100) NOT NULL,
+  `phone_number` VARCHAR(20) NOT NULL,
+  `email` VARCHAR(255) NOT NULL UNIQUE,
+  `password` VARCHAR(255) NOT NULL,
+  `birthdate` DATE,
+  PRIMARY KEY (`id`)
 );
 ```
 
-2. enquiry
+2. reservation
 
 ```
-CREATE TABLE enquiry (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    full_name VARCHAR(100) NOT NULL,
-    email_address VARCHAR(100) NOT NULL,
-    phone_number VARCHAR(15),
-    subject VARCHAR(150) NOT NULL,
-    message TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE `reservation` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `phone_number` VARCHAR(20) NOT NULL,
+  `reservation_date` DATE NOT NULL,
+  `reservation_time` TIME NOT NULL,
+  `number_of_guests` INT(11) NOT NULL,
+  `table_preference` VARCHAR(50),
+  `status` VARCHAR(20) NOT NULL DEFAULT 'pending',
+  PRIMARY KEY (`id`)
 );
 ```
 
-3. reservation
+## Database Schema
 
-```
-CREATE TABLE reservation (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    phone_number VARCHAR(15) NOT NULL,
-    reservation_date DATE NOT NULL,
-    reservation_time TIME NOT NULL,
-    number_of_guests INT NOT NULL,
-    special_occasion VARCHAR(100),
-    special_requests TEXT,
-    table_preference VARCHAR(50),
-    status VARCHAR(20) DEFAULT 'confirmed',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+### Database Name
+`royal-restaurant`
+
+### Tables
+
+#### 1. `users`
+| Field         | Type         | Null | Key | Extra          | Description                |
+|---------------|--------------|------|-----|----------------|----------------------------|
+| id            | INT(11)      | NO   | PRI | AUTO_INCREMENT | User ID (Primary Key)      |
+| first_name    | VARCHAR(100) | NO   |     |                | First Name                 |
+| last_name     | VARCHAR(100) | NO   |     |                | Last Name                  |
+| phone_number  | VARCHAR(20)  | NO   |     |                | Phone Number               |
+| email         | VARCHAR(255) | NO   | UNI |                | Email (unique)             |
+| password      | VARCHAR(255) | NO   |     |                | Hashed Password            |
+| birthdate     | DATE         | YES  |     |                | Birthdate                  |
+
+```sql
+CREATE TABLE `users` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `first_name` VARCHAR(100) NOT NULL,
+  `last_name` VARCHAR(100) NOT NULL,
+  `phone_number` VARCHAR(20) NOT NULL,
+  `email` VARCHAR(255) NOT NULL UNIQUE,
+  `password` VARCHAR(255) NOT NULL,
+  `birthdate` DATE,
+  PRIMARY KEY (`id`)
 );
 ```
+
+#### 2. `reservation`
+| Field             | Type         | Null | Key | Extra          | Description                |
+|-------------------|--------------|------|-----|----------------|----------------------------|
+| id                | INT(11)      | NO   | PRI | AUTO_INCREMENT | Reservation ID             |
+| name              | VARCHAR(100) | NO   |     |                | Customer Name              |
+| email             | VARCHAR(255) | NO   |     |                | Customer Email             |
+| phone_number      | VARCHAR(20)  | NO   |     |                | Customer Phone             |
+| reservation_date  | DATE         | NO   |     |                | Reservation Date           |
+| reservation_time  | TIME         | NO   |     |                | Reservation Time           |
+| number_of_guests  | INT(11)      | NO   |     |                | Number of Guests           |
+| table_preference  | VARCHAR(50)  | YES  |     |                | Table Preference           |
+| status            | VARCHAR(20)  | NO   |     |                | Status (pending/confirmed/completed/rejected) |
+
+```sql
+CREATE TABLE `reservation` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `phone_number` VARCHAR(20) NOT NULL,
+  `reservation_date` DATE NOT NULL,
+  `reservation_time` TIME NOT NULL,
+  `number_of_guests` INT(11) NOT NULL,
+  `table_preference` VARCHAR(50),
+  `status` VARCHAR(20) NOT NULL DEFAULT 'pending',
+  PRIMARY KEY (`id`)
+);
+```
+
+---
+
+If you have more tables (like menu, orders, etc.), add them below as needed.

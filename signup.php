@@ -610,8 +610,11 @@ if (!empty($_SESSION['registration_error']) || !empty($_SESSION['registration_er
     unset($_SESSION['registration_error_phoneNumber']);
 }
 ?>
+
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (!empty($_SESSION['registration_error']) || !empty($_SESSION['registration_error_phoneNumber'])) {
     echo '<div class="error-message" id="errorMessage">
