@@ -120,6 +120,18 @@
   box-shadow: 0 5px 15px rgba(211, 84, 0, 0.3);
 }
 
+.logout-btn {
+  background: var(--accent);
+  color: white;
+}
+
+.logout-btn:hover {
+  background: var(--secondary);
+  transform: translateY(-3px);
+  color: var(--error);
+  box-shadow: 0 5px 15px rgba(211, 84, 0, 0.3);
+}
+
 .menu-toggle {
   display: none;
   font-size: 1.5rem;

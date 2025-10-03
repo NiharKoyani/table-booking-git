@@ -1,85 +1,75 @@
-<form id="bookingForm">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="name">Full Name<span>*</span></label>
-                                <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address<span>*</span></label>
-                                <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone Number<span>*</span></label>
-                                <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="date">Date<span>*</span></label>
-                                <input type="date" id="date" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="time">Time<span>*</span></label>
-                                <input type="time" id="time" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="guests">Number of Guests<span>*</span></label>
-                                <select id="guests" class="form-control" required>
-                                    <option value="" disabled selected>Select number of guests</option>
-                                    <option value="1">1 Person</option>
-                                    <option value="2">2 People</option>
-                                    <option value="3">3 People</option>
-                                    <option value="4">4 People</option>
-                                    <option value="5">5 People</option>
-                                    <option value="6">6 People</option>
-                                    <option value="7">7+ People</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="occasion">Special Occasion (Optional)</label>
-                                <select id="occasion" class="form-control">
-                                    <option value="" selected>No special occasion</option>
-                                    <option value="birthday">Birthday</option>
-                                    <option value="anniversary">Anniversary</option>
-                                    <option value="business">Business Dinner</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="requests">Special Requests (Optional)</label>
-                                <textarea id="requests" class="form-control" rows="3" placeholder="Any special requests?"></textarea>
-                            </div>
-                        </div>
-                        
-                        <section id="Preference" class="table-selection">
-                            <h4>Table Preference</h4>
-                            <div class="table-options">
-                                <div class="table-option" data-type="standard">
-                                    <div class="table-icon">
-                                        <i class="fas fa-chair"></i>
-                                    </div>
-                                    <option>Standard</option>
-                                </div>
-                                <div class="table-option" data-type="booth">
-                                    <div class="table-icon">
-                                        <i class="fas fa-couch"></i>
-                                    </div>
-                                    <option>Booth</option>
-                                </div>
-                                <div class="table-option" data-type="window">
-                                    <div class="table-icon">
-                                        <i class="fas fa-window-restore"></i>
-                                    </div>
-                                    <option>Window</option>
-                                </div>
-                                <div class="table-option" data-type="private">
-                                    <div class="table-icon">
-                                        <i class="fas fa-door-closed"></i>
-                                    </div>
-                                    <option>Private</option>
-                                </div>
-                            </div>
-                        </section>
-                        
-                        <div class="form-submit">
-                            <button type="submit" class="btn">Book Now</button>
-                        </div>
-                    </form>
+<form action="./server/reservation.php" method="post" id="bookingForm">
+    <div class="form-grid">
+        <div class="form-group">
+            <label for="name">Full Name<span>*</span></label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address<span>*</span></label>
+            <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number<span>*</span></label>
+            <input
+                required
+              type="tel"
+              id="phone"
+              name="phone"
+              class="form-control"
+              placeholder="+91 9876543210"
+              pattern="^\+91[6-9]\d{9}$"
+              title="Enter a valid Indian phone number with country code, e.g. +91 9876543210"
+            >
+        </div>
+        <div class="form-group">
+            <label for="date">Date<span>*</span></label>
+            <input type="date" name="date" id="date" class="form-control" required min="<?php echo date('Y-m-d'); ?>">
+        </div>
+        <div class="form-group">
+            <label for="time">Time<span>*</span></label>
+            <input type="time" id="time" name="time" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="guests">Number of Guests<span>*</span></label>
+            <select id="guests" name="guests" class="form-control" required>
+                <option value="" disabled selected>Select number of guests</option>
+                <option value="1">1 Person</option>
+                <option value="2">2 People</option>
+                <option value="3">3 People</option>
+                <option value="4">4 People</option>
+                <option value="5">5 People</option>
+                <option value="6">6 People</option>
+                <option value="7">7+ People</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="occasion">Special Occasion (Optional)</label>
+            <select id="occasion" name="occasion" class="form-control">
+                <option value="" selected>No special occasion</option>
+                <option value="birthday">Birthday</option>
+                <option value="anniversary">Anniversary</option>
+                <option value="business">Business Dinner</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="requests">Special Requests (Optional)</label>
+            <textarea id="requests" name="requests" class="form-control" rows="3" placeholder="Any special requests?"></textarea>
+        </div>
+    </div>
+    
+    <section id="Preference" class="table-selection">
+        <label>Table Preference</label>
+        <select id="table_preference" name="table_preference" class="form-control">
+            <option value="all">Any</option>
+            <option value="standard">Standard</option>
+            <option value="booth">Booth</option>
+            <option value="window">Window</option>
+            <option value="private">Private</option>
+        </select>
+    </section>
+    
+    <div class="form-submit">
+        <button type="submit" class="btn">Book Now</button>
+    </div>
+</form>

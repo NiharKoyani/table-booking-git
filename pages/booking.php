@@ -384,9 +384,6 @@
         <p>We look forward to serving you at Royal Restaurant!</p>
         <button class="btn" id="newBooking">Make Another Reservation</button>
     </div>
-
-    
-
     <script>
         // Table selection functionality
         document.querySelectorAll('.table-option').forEach(option => {
@@ -397,244 +394,59 @@
                 this.classList.add('selected');
             });
         });
-
-        // Phone number validation function
-function validatePhoneNumber(phone) {
-    // Remove all non-digit characters except + at the beginning
-    const cleaned = phone.replace(/^(?:\+)?([^\d+])/g, '');
-    
-    // Common phone number patterns
-    const patterns = {
-        international: /^\+\d{10,15}$/, // + followed by 10-15 digits
-        us: /^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/, // (123) 456-7890 or 123-456-7890
-        basic: /^\d{10}$/ // 1234567890
-    };
-    
-    return patterns.international.test(cleaned) || 
-           patterns.us.test(phone) || 
-           patterns.basic.test(cleaned);
-}
-
-// Real-time phone validation with visual feedback
-function setupPhoneValidation() {
-    const phoneInput = document.getElementById('phone');
-    
-    if (!phoneInput) return;
-    
-    // Format phone number as user types
-    phoneInput.addEventListener('input', function(e) {
-        const value = e.target.value.replace(/\D/g, '');
         
-        if (value.length <= 3) {
-            e.target.value = value;
-        } else if (value.length <= 6) {
-            e.target.value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
-        } else {
-            e.target.value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
-        }
-        
-        // Update validation styling
-        updatePhoneValidationStyle(e.target);
-    });
-    
-    // Validate on blur
-    phoneInput.addEventListener('blur', function(e) {
-        updatePhoneValidationStyle(e.target);
-    });
-    
-    // Validate before form submission
-    const form = document.getElementById('bookingForm');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            if (!validatePhone(phoneInput.value)) {
-                e.preventDefault();
-                showPhoneError('Please enter a valid phone number');
-                phoneInput.focus();
+        </script>
+        <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var bookingForm = document.getElementById('bookingForm');
+        if (bookingForm) {
+            var dateInput = document.getElementById('date');
+            var timeInput = document.getElementById('time');
+
+            function setMinTime() {
+                var today = new Date();
+                var selectedDate = new Date(dateInput.value);
+                if (dateInput.value && selectedDate.toDateString() === today.toDateString()) {
+                    var hours = today.getHours().toString().padStart(2, '0');
+                    var minutes = today.getMinutes().toString().padStart(2, '0');
+                    timeInput.min = hours + ':' + minutes;
+                } else {
+                    timeInput.min = '';
+                }
             }
-        });
-    }
-}
 
-// Update visual style based on validation
-function updatePhoneValidationStyle(input) {
-    const value = input.value.replace(/\D/g, '');
-    
-    if (value.length === 0) {
-        input.style.borderColor = '#ddd';
-        input.style.boxShadow = 'none';
-    } else if (validatePhone(input.value)) {
-        input.style.borderColor = '#27ae60';
-        input.style.boxShadow = '0 0 0 2px rgba(39, 174, 96, 0.2)';
-    } else {
-        input.style.borderColor = '#e74c3c';
-        input.style.boxShadow = '0 0 0 2px rgba(231, 76, 60, 0.2)';
-    }
-}
+            if (dateInput && timeInput) {
+                dateInput.addEventListener('change', setMinTime);
+                setMinTime();
+            }
 
-// Enhanced phone validation function
-function validatePhone(phone) {
-    if (!phone) return false;
-    
-    // Remove all non-digit characters except + at start
-    const cleaned = phone.replace(/[^\d+]/g, '');
-    
-    // Check if it's an international format
-    if (cleaned.startsWith('+')) {
-        return cleaned.length >= 11 && cleaned.length <= 16; // +1 to +15 digits
-    }
-    
-    // US/Canada format (10 digits)
-    const digitsOnly = cleaned.replace(/\D/g, '');
-    return digitsOnly.length === 10;
-}
+            bookingForm.addEventListener('submit', function(e) {
+                // Basic validation example (customize as needed)
+                var isValid = true;
+                var requiredFields = bookingForm.querySelectorAll('[required]');
+                requiredFields.forEach(function(field) {
+                    if (!field.value) {
+                        isValid = false;
+                        field.classList.add('error');
+                    } else {
+                        field.classList.remove('error');
+                    }
+                });
 
-// Show error message
-function showPhoneError(message) {
-    // Remove existing error message
-    const existingError = document.querySelector('.phone-error');
-    if (existingError) {
-        existingError.remove();
-    }
-    
-    // Create error message element
-    const errorElement = document.createElement('div');
-    errorElement.className = 'phone-error';
-    errorElement.style.color = '#e74c3c';
-    errorElement.style.fontSize = '0.875rem';
-    errorElement.style.marginTop = '5px';
-    errorElement.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
-    
-    // Insert after phone input
-    const phoneInput = document.getElementById('phone');
-    phoneInput.parentNode.appendChild(errorElement);
-}
+                if (!isValid) {
+                    e.preventDefault();
+                    // Optionally show a message to the user
+                    alert('Please fill in all required fields.');
+                    return false;
+                }
+                // If valid, allow submit (or add AJAX logic here)
 
-// Alternative: Simple phone validation (basic version)
-function simplePhoneValidation(phone) {
-    // Remove all non-digit characters
-    const digitsOnly = phone.replace(/\D/g, '');
-    
-    // Check if it has 10 digits (US/Canada format)
-    return digitsOnly.length === 10;
-}
+                    // Optionally, you can do AJAX here, but as requested, submit the form
+                    bookingForm.submit();
 
-// Initialize phone validation when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    setupPhoneValidation();
-    
-    // Add CSS for validation states
-    const style = document.createElement('style');
-    style.textContent = `
-        .phone-valid {
-            border-color: #27ae60 !important;
-            box-shadow: 0 0 0 2px rgba(39, 174, 96, 0.2) !important;
+            });
         }
-        
-        .phone-invalid {
-            border-color: #e74c3c !important;
-            box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2) !important;
-        }
-        
-        .phone-error {
-            color: #e74c3c;
-            font-size: 0.875rem;
-            margin-top: 5px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-    `;
-    document.head.appendChild(style);
-});
-
-        // Form submission
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-        // Validate phone number
-        const phone = document.getElementById('phone').value;
-        if (!validatePhone(phone)) {
-        showPhoneError('Please enter a valid 10-digit phone number');
-        document.getElementById('phone').focus();
-        return;
-    }
-
-            // Get form values
-            const name = document.getElementById('name').value;
-            const date = document.getElementById('date').value;
-            const time = document.getElementById('time').value;
-            const guests = document.getElementById('guests').value;
-            const occasion = document.getElementById('occasion').value;
-            const requests = document.getElementById('requests').value;
-            
-            // Get selected table type
-            const selectedTable = document.querySelector('.table-option.selected');
-            const tableType = selectedTable ? selectedTable.getAttribute('data-type') : 'Not specified';
-            
-            // Format date for display
-            const formattedDate = new Date(date).toLocaleDateString('en-US', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-            
-            // Format time for display
-            const formattedTime = new Date(`2000-01-01T${time}`).toLocaleTimeString('en-US', {
-                hour: 'numeric',
-                minute: '2-digit',
-                hour12: true
-            });
-            
-            // Update confirmation details
-            document.getElementById('confirm-name').textContent = name;
-            document.getElementById('confirm-date').textContent = formattedDate;
-            document.getElementById('confirm-time').textContent = formattedTime;
-            document.getElementById('confirm-guests').textContent = `${guests} ${guests === '1' ? 'person' : 'people'}`;
-            document.getElementById('confirm-table').textContent = tableType.charAt(0).toUpperCase() + tableType.slice(1);
-            
-            // Hide form and show confirmation
-            document.querySelector('.booking').style.display = 'none';
-            document.getElementById('confirmation').style.display = 'block';
-            
-            // Add some animation to the confirmation
-            const confirmation = document.getElementById('confirmation');
-            confirmation.style.animation = 'none';
-            setTimeout(() => {
-                confirmation.style.animation = 'fadeInUp 0.8s ease';
-            }, 10);
-        });
-
-        // New booking button
-        document.getElementById('newBooking').addEventListener('click', function() {
-            // Show booking section and hide confirmation
-            document.querySelector('.booking').style.display = 'block';
-            document.getElementById('confirmation').style.display = 'none';
-            
-            // Reset form
-            document.getElementById('bookingForm').reset();
-            document.querySelectorAll('.table-option').forEach(opt => {
-                opt.classList.remove('selected');
-            });
-            
-            // Add animation to the booking section
-            const bookingSection = document.querySelector('.booking');
-            bookingSection.style.animation = 'none';
-            setTimeout(() => {
-                bookingSection.style.animation = 'fadeInUp 0.8s ease';
-            }, 10);
-            
-            // Scroll to booking section
-            window.scrollTo({
-                top: bookingSection.offsetTop - 80,
-                behavior: 'smooth'
-            });
-        });
-
-        // Set minimum date to today
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('date').setAttribute('min', today);
-
-    </script>
+    });
+</script>
 </body>
 </html>

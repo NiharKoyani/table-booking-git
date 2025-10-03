@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+    <?php session_start();
+        $error = $_SESSION['login_error'];
+    ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -297,7 +300,6 @@
             padding: 12px 15px;
             border-radius: 4px;
             margin-bottom: 20px;
-            display: none;
             align-items: center;
             gap: 10px;
         }
@@ -449,17 +451,23 @@
                     <p>Enter your credentials to access your account</p>
                 </div>
                 
-                <div class="error-message" id="errorMessage">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <span id="errorText">Invalid email or password. Please try again.</span>
-                </div>
+                <?php  
+                    if(isset($error)){
+                        unset($_SESSION['login_error']); // remove the error after displaying
+
+                        echo '<div class="error-message" id="errorMessage">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <span id="errorText">' . htmlspecialchars($error) . '</span>
+                              </div>';
+                    } 
+                ?>
                 
                 <div class="success-message" id="successMessage">
                     <i class="fas fa-check-circle"></i>
                     <span id="successText">Login successful! Redirecting...</span>
                 </div>
                 
-                <form class="login-form" id="loginForm">
+                <form class="login-form" method="post" action="./server/process.php" id="loginForm">
                     <div class="form-group">
                         <label for="email">Email Address</label>
                         <div class="input-with-icon">
@@ -484,7 +492,7 @@
                         <a href="./forgot-password.php" class="forgot-password">Forgot password?</a>
                     </div>
                     
-                    <button type="submit" class="btn" name="loginBtn">Sign In</button>
+                    <button type="submit" class="btn" name="login">Sign In</button>
                     
                     <div class="signup-link">
                         Don't have an account? <a href="signup.php">Sign up here</a>

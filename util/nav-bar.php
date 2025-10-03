@@ -1,4 +1,5 @@
 <?php
+session_start();
 $isBookingTable = false;
 $isMenu = false;
 $isAboutUs = false;
@@ -17,7 +18,8 @@ if(isset($_GET['booking-table'])){
     $isHome = true;
 }
 ?>
-
+<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="../css/universal.css">
 <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
@@ -38,8 +40,16 @@ if(isset($_GET['booking-table'])){
             </ul>
             
             <div class="auth-buttons">
-                <a href="./login.php"><button class="auth-btn login-btn">Login</button></a>
-                <a href="./signup.php"><button class="auth-btn signup-btn">Sign Up</button></a>
+                <?php 
+                    $first_name = $_SESSION['username']['firstName'] ?? null;
+
+                    if ($first_name) {
+                        echo '<a href="./server/logout.php"><button class="auth-btn logout-btn">Log Out ? (' . htmlspecialchars($first_name) . ')</button></a>';
+                    } else {
+                        echo '<a href="./login.php"><button class="auth-btn login-btn">Login</button></a>
+                              <a href="./signup.php"><button class="auth-btn signup-btn">Sign Up</button></a>';
+                    }
+                ?>
             </div>
         </div>
     </nav>
