@@ -481,7 +481,7 @@
                             <input type="checkbox" name="remember">
                             <label for="remember">Remember me</label>
                         </div>
-                        <a href="forgot-password.html" class="forgot-password">Forgot password?</a>
+                        <a href="./forgot-password.php" class="forgot-password">Forgot password?</a>
                     </div>
                     
                     <button type="submit" class="btn" name="loginBtn">Sign In</button>

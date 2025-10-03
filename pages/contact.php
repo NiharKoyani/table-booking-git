@@ -507,7 +507,7 @@
                     <i class="fas fa-map"></i>
                     <h3>Our Location</h3>
                     <p>ROYAL restaurant , Palace Road, Jamnagar, Gujarat - 361008</p>
-                    <a href="https://maps.app.goo.gl/VNK61RtgEcWq3XoVA" target="_blank" class="btn" style="margin-top: 20px;">Get Directions</a>
+                    <a href="https://maps.app.goo.gl/wErA7YULqZQWueNc6" target="_blank" class="btn" style="margin-top: 20px;">Get Directions</a>
                 </div>
             </div>
         </div>
