@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php session_start(); ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -306,7 +307,6 @@
 
         /* Confirmation Message */
         .confirmation {
-            display: none;
             text-align: center;
             padding: 60px 40px;
             background: white;
@@ -412,7 +412,15 @@
             <a href="#contact-form" class="btn">Send Us a Message</a>
         </div>
     </section>
-
+<?php if (isset($_SESSION['enquirie'])) { ?>
+    <div class="confirmation" id="confirmation"> 
+        <i class="fas fa-check-circle"></i>
+        <h2>Message Sent Successfully!</h2>
+        <p>Thank you for contacting Royal Restaurant. We've received your message and will respond within 24 hours.</p>
+        <a href="./index.php?contact"><button class="btn" id="newMessage">Send Another Message</button></a>
+    </div>
+    <?php unset($_SESSION['enquirie']); ?>
+<?php } else { ?>
     <section class="contact-section">
         <div class="container">
             <div class="section-title">
@@ -421,7 +429,8 @@
             <div class="contact-container">
                 <div class="contact-form" id="contact-form">
                     <h3 class="form-title">Send Us a Message</h3>
-                    <form action="./server/inq.php" method="post" id="contactForm">
+                    <form action="./server/enquiry.php" method="post" id="contactForm">
+                        <?php if(!isset($_SESSION['username'])){ ?>
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
@@ -442,6 +451,16 @@
                               title="Enter a valid Indian phone number with country code, e.g. +91 9876543210"
                             >
                         </div>
+                        <?php } else {
+                            $firstName = htmlspecialchars($_SESSION['username']['firstName']);
+                            $lastName = htmlspecialchars($_SESSION['username']['lastName']);
+                            $email = htmlspecialchars($_SESSION['username']['email']);
+                            $phoneNumber = htmlspecialchars($_SESSION['username']['phoneNumber']);
+                        ?>
+                            <input type="text" hidden name="name" id="name" class="form-control" value="<?php echo $firstName . ' ' . $lastName; ?>" readonly>
+                            <input type="email" hidden name="email" id="email" class="form-control" value="<?php echo $email; ?>" readonly>
+                            <input type="tel" hidden name="phone" id="phone" class="form-control" value="<?php echo $phoneNumber; ?>" readonly>
+                        <?php } ?>
                         <div class="form-group">
                             <label for="subject">Subject</label>
                             <select id="subject" name="subject" class="form-control" required>
@@ -499,6 +518,7 @@
             </div>
         </div>
     </section>
+<?php } ?>
 
     <section class="map-section">
         <div class="container">
@@ -573,12 +593,6 @@
         </div>
     </section>
 <!-- //class name = fadeInUp 0.8s ease -->
-    <div class="confirmation" id="confirmation"> 
-        <i class="fas fa-check-circle"></i>
-        <h2>Message Sent Successfully!</h2>
-        <p>Thank you for contacting Royal Restaurant. We've received your message and will respond within 24 hours.</p>
-        <button class="btn" id="newMessage">Send Another Message</button>
-    </div>
 </div>
     <script>
         // (Removed JS that prevented form submission to allow PHP to process the form)

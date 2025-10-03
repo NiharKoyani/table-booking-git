@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    <?php session_start(); ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -194,7 +195,6 @@
 
         /* Confirmation Section */
         .confirmation {
-            display: none;
             text-align: center;
             padding: 60px 40px;
             background: white;
@@ -303,6 +303,7 @@
     </style>
 </head>
 <body>
+    <?php if(!isset($_SESSION['booking'])){ ?>
     <section class="booking" id="booking">
         <div class="container">
             <div class="section-title">
@@ -345,13 +346,13 @@
                 </div>
 
                 <div class="booking-form">
-                    <h3 class="form-title">Reserve Your Table</h3>
+                    <h3 class="form-title"><?php echo isset($_SESSION['username']) ? 'Hey! ' . $_SESSION['username']['firstName'] : null ?> Reserve Your Table</h3>
                     <?php include('./util/booking-form.php')?>
                 </div>
             </div>
         </div>
     </section>
-
+<?php } else { ?>
     <div class="confirmation" id="confirmation">
         <i class="fas fa-check-circle"></i>
         <h2>Reservation Confirmed!</h2>
@@ -361,92 +362,31 @@
             <h3>Reservation Details</h3>
             <div class="detail-row">
                 <span>Name:</span>
-                <span id="confirm-name"></span>
+                <span id="confirm-name"><?php echo $_SESSION['booking']['name'] ?></span>
             </div>
             <div class="detail-row">
                 <span>Date:</span>
-                <span id="confirm-date"></span>
+                <span id="confirm-date"><?php echo $_SESSION['booking']['date'] ?></span>
             </div>
             <div class="detail-row">
                 <span>Time:</span>
-                <span id="confirm-time"></span>
+                <span id="confirm-time"><?php echo $_SESSION['booking']['time'] ?></span>
             </div>
             <div class="detail-row">
                 <span>Guests:</span>
-                <span id="confirm-guests"></span>
+                <span id="confirm-guests"><?php echo $_SESSION['booking']['guests'] ?></span>
             </div>
             <div class="detail-row">
                 <span>Table Type:</span>
-                <span id="confirm-table"></span>
+                <span id="confirm-table"><?php echo $_SESSION['booking']['table-type'] ?></span>
             </div>
         </div>
         
         <p>We look forward to serving you at Royal Restaurant!</p>
-        <button class="btn" id="newBooking">Make Another Reservation</button>
+        <a href="./index.php?booking-table"><button class="btn" id="newBooking">Make Another Reservation</button></a>
     </div>
-    <script>
-        // Table selection functionality
-        document.querySelectorAll('.table-option').forEach(option => {
-            option.addEventListener('click', function() {
-                document.querySelectorAll('.table-option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-                this.classList.add('selected');
-            });
-        });
-        
-        </script>
-        <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var bookingForm = document.getElementById('bookingForm');
-        if (bookingForm) {
-            var dateInput = document.getElementById('date');
-            var timeInput = document.getElementById('time');
+    <?php } unset($_SESSION['booking'])?>
 
-            function setMinTime() {
-                var today = new Date();
-                var selectedDate = new Date(dateInput.value);
-                if (dateInput.value && selectedDate.toDateString() === today.toDateString()) {
-                    var hours = today.getHours().toString().padStart(2, '0');
-                    var minutes = today.getMinutes().toString().padStart(2, '0');
-                    timeInput.min = hours + ':' + minutes;
-                } else {
-                    timeInput.min = '';
-                }
-            }
-
-            if (dateInput && timeInput) {
-                dateInput.addEventListener('change', setMinTime);
-                setMinTime();
-            }
-
-            bookingForm.addEventListener('submit', function(e) {
-                // Basic validation example (customize as needed)
-                var isValid = true;
-                var requiredFields = bookingForm.querySelectorAll('[required]');
-                requiredFields.forEach(function(field) {
-                    if (!field.value) {
-                        isValid = false;
-                        field.classList.add('error');
-                    } else {
-                        field.classList.remove('error');
-                    }
-                });
-
-                if (!isValid) {
-                    e.preventDefault();
-                    // Optionally show a message to the user
-                    alert('Please fill in all required fields.');
-                    return false;
-                }
-                // If valid, allow submit (or add AJAX logic here)
-
-                    // Optionally, you can do AJAX here, but as requested, submit the form
-                    bookingForm.submit();
-
-            });
-        }
-    });
-</script>
+<script src="./util/booking-form-validation.js"></script>
 </body>
 </html>

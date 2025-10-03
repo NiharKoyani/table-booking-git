@@ -1,5 +1,8 @@
+<?php session_start(); ?>
+
 <form action="./server/reservation.php" method="post" id="bookingForm">
     <div class="form-grid">
+        <?php if(!isset($_SESSION['username'])){ ?>
         <div class="form-group">
             <label for="name">Full Name<span>*</span></label>
             <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
@@ -21,6 +24,16 @@
               title="Enter a valid Indian phone number with country code, e.g. +91 9876543210"
             >
         </div>
+        <?php } else {
+            $firstName = htmlspecialchars($_SESSION['username']['firstName']);
+            $lastName = htmlspecialchars($_SESSION['username']['lastName']);
+            $email = htmlspecialchars($_SESSION['username']['email']);
+            $phoneNumber = htmlspecialchars($_SESSION['username']['phoneNumber']);
+        ?>
+            <input type="text" hidden name="name" id="name" class="form-control" value="<?php echo $firstName . ' ' . $lastName; ?>" readonly>
+            <input type="email" hidden name="email" id="email" class="form-control" value="<?php echo $email; ?>" readonly>
+            <input type="tel" hidden name="phone" id="phone" class="form-control" value="<?php echo $phoneNumber; ?>" readonly>
+        <?php } ?>
         <div class="form-group">
             <label for="date">Date<span>*</span></label>
             <input type="date" name="date" id="date" class="form-control" required min="<?php echo date('Y-m-d'); ?>">

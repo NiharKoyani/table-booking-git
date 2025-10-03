@@ -217,36 +217,6 @@
             margin-top: 20px;
         }
 
-        /* Confirmation Section */
-        .confirmation {
-            display: none;
-            text-align: center;
-            padding: 60px 40px;
-            background: white;
-            border-radius: 8px;
-            margin: 50px auto;
-            max-width: 700px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            animation: fadeInUp 0.8s ease;
-        }
-
-        .confirmation i {
-            font-size: 4rem;
-            color: #27ae60;
-            margin-bottom: 20px;
-        }
-
-        .confirmation h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .confirmation p {
-            margin-bottom: 15px;
-            color: var(--text-light);
-        }
-
 
         /* Animations */
         @keyframes fadeIn {
@@ -340,55 +310,7 @@
         </div>
     </section>
 
-    <div class="confirmation" id="confirmation">
-        <i class="fas fa-check-circle"></i>
-        <h2>Reservation Confirmed!</h2>
-        <p>Thank you for your reservation. We've sent a confirmation email with all the details.</p>
-        <p>We look forward to serving you at Royal Restaurant!</p>
-        <button class="btn" id="newBooking">Make Another Reservation</button>
-    </div>
+<script src="./util/booking-form-validation.js"></script>
 
-    <script>
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const date = document.getElementById('date').value;
-            const time = document.getElementById('time').value;
-            
-            // Hide form and show confirmation
-            document.querySelector('.booking-form').style.display = 'none';
-            document.getElementById('confirmation').style.display = 'block';
-            
-            // Add some animation to the confirmation
-            const confirmation = document.getElementById('confirmation');
-            confirmation.style.animation = 'none';
-            setTimeout(() => {
-                confirmation.style.animation = 'fadeInUp 0.8s ease';
-            }, 10);
-        });
-
-        document.getElementById('newBooking').addEventListener('click', function() {
-            // Show form and hide confirmation
-            document.querySelector('.booking-form').style.display = 'block';
-            document.getElementById('confirmation').style.display = 'none';
-            
-            // Reset form
-            document.getElementById('bookingForm').reset();
-            
-            // Add animation to the form
-            const form = document.querySelector('.booking-form');
-            form.style.animation = 'none';
-            setTimeout(() => {
-                form.style.animation = 'slideInUp 0.8s ease';
-            }, 10);
-        });
-
-        // Set minimum date to today
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('date').setAttribute('min', today);
-
-    </script>
 </body>
 </html>

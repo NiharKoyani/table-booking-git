@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = isset($_POST['name']) ? trim($_POST['name']) : '';
@@ -24,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("ssssisss", $name, $email, $phone, $datetime, $guests, $occasion, $requests, $table_preference );
 
     if ($stmt->execute()) {
+        $_SESSION['booking'] = ['name'=>ucfirst($name),'date'=>$date, 'time'=>$time, 'guests'=> $guests, 'table-type'=> ucfirst($table_preference)];
         header('Location: ../index.php?booking-table');
         exit();
     }
