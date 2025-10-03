@@ -1,4 +1,4 @@
-    <link rel="stylesheet" href="./css/universal.css">
+<link rel="stylesheet" href="./css/universal.css">
 
     <style>
         body {
@@ -285,6 +285,17 @@
             }
         }
 
+        /* Table Styles */
+        .menu-table-view { width:100%; border-collapse:collapse; margin-bottom:48px; }
+        .menu-table-view th, .menu-table-view td { padding:18px 20px; border-bottom:1px solid #eaeaea; text-align:left; }
+        .menu-table-view th { background:#f8f8f8; color:var(--primary); font-size:1.1rem; font-weight:600; }
+        .menu-table-view tr:last-child td { border-bottom:none; }
+        .menu-table-img { width:70px; height:48px; object-fit:cover; border-radius:8px; box-shadow:0 2px 8px #0001; }
+        .menu-table-title { color:var(--primary); font-weight:600; font-size:1.1rem; }
+        .menu-table-price { color:var(--accent); font-weight:700; font-size:1.1rem; }
+        .menu-table-desc { color:var(--text-light); font-size:0.98rem; }
+        .menu-table-category { color:#fff; background:var(--primary); border-radius:6px; padding:4px 14px; font-size:0.95rem; font-weight:500; display:inline-block; }
+
         /* Responsive Styles */
         @media (max-width: 768px) {
             
@@ -339,217 +350,56 @@
             <div class="section-title">
                 <h2>What We Serve</h2>
             </div>
-
-            <!-- Appetizers -->
-            <div class="menu-category" data-category="appetizers">
-                <h3 class="category-title">Starters</h3>
+            <?php
+            include_once __DIR__ . '/../server/menu.php';
+            $categories = [
+                'appetizers' => 'Starters',
+                'mains' => 'Main Dishes',
+                'desserts' => 'Sweets',
+                'drinks' => 'Drinks',
+                'specials' => "Chef's Specials"
+            ];
+            $menu_items = get_menu_items(null, true);
+            $grouped = [];
+            foreach ($menu_items as $item) {
+                $grouped[$item['category']][] = $item;
+            }
+            foreach ($categories as $cat_key => $cat_label):
+                if (!empty($grouped[$cat_key])):
+            ?>
+            <div class="menu-category" data-category="<?php echo $cat_key; ?>">
+                <h3 class="category-title"><?php echo $cat_label; ?></h3>
                 <div class="menu-items">
-                    <div class="menu-item">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_p11iUJCPbK-S_FfiHSSpOHHHvXzfw65FHg&s" alt="Paneer Tikka" class="item-image">
-                        <div class="item-content">
-                            <div class="item-header">
-                                <h4 class="item-title">Paneer Tikka</h4>
-                                <span class="item-price">₹180</span>
-                            </div>
-                            <p class="item-description">Grilled cottage cheese cubes marinated in Indian spices.</p>
-                            <div class="item-tags">
-                                <span class="item-tag vegetarian">Vegetarian</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSTHwdRrONYs7dG4LiUtGZL_IvgBU1vVtwzg&s" alt="Samosa" class="item-image">
-                        <div class="item-content">
-                            <div class="item-header">
-                                <h4 class="item-title">Samosa</h4>
-                                <span class="item-price">₹40</span>
-                            </div>
-                            <p class="item-description">Crispy pastry filled with spicy potatoes and peas.</p>
-                            <div class="item-tags">
-                                <span class="item-tag vegetarian">Vegetarian</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Main Courses -->
-            <div class="menu-category" data-category="mains">
-                <h3 class="category-title">Main Dishes</h3>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZaHS9Q4odVsxJlxW6ry7ubewoHvLWJh8SRDi-TFEJw0TMEgr6c3B96HYsAO7y00dDu_0&usqp=CAU" alt="Masala Dosa" class="item-image">
-                        <div class="item-content">
-                            <div class="item-header">
-                                <h4 class="item-title">Masala Dosa</h4>
-                                <span class="item-price">₹120</span>
-                            </div>
-                            <p class="item-description">Crispy rice crepe filled with spicy potato mix, served with chutney and sambar.</p>
-                            <div class="item-tags">
-                                <span class="item-tag vegetarian">Vegetarian</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://sitaramdiwanchand.com/blog/wp-content/uploads/2024/05/Comprehensive-Guide-to-Chole-Bhature-Side-Dishes.jpg" alt="Chole Kulche" class="item-image">
-                        <div class="item-content">
-                            <div class="item-header">
-                                <h4 class="item-title">Chole Kulche</h4>
-                                <span class="item-price">₹100</span>
-                            </div>
-                            <p class="item-description">Soft bread served with spicy chickpea curry, onions, and lemon.</p>
-                            <div class="item-tags">
-                                <span class="item-tag vegetarian">Vegetarian</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYwLSek8iYF8HRARFlDE8dOTAd2vvcvvX9ug&s" alt="Paneer Butter Masala" class="item-image">
-                        <div class="item-content">
-                            <div class="item-header">
-                                <h4 class="item-title">Paneer Butter Masala</h4>
-                                <span class="item-price">₹160</span>
-                            </div>
-                            <p class="item-description">Paneer cubes in a creamy tomato and butter gravy.</p>
-                            <div class="item-tags">
-                                <span class="item-tag vegetarian">Vegetarian</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQue-aIE_MoUy4ZGNDYMcpcgfDed0cbCo_O5w&s" alt="Dal Makhani" class="item-image">
-                        <div class="item-content">
-                            <div class="item-header">
-                                <h4 class="item-title">Dal Makhani</h4>
-                                <span class="item-price">₹110</span>
-                            </div>
-                            <p class="item-description">Black lentils slow-cooked with butter and cream.</p>
-                            <div class="item-tags">
-                                <span class="item-tag vegetarian">Vegetarian</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Desserts -->
-            <div class="menu-category" data-category="desserts">
-                <h3 class="category-title">Sweets</h3>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEfhmhk_a2F93uDrmp-aEskk9BLVX9dgX1SQ&s" alt="Gulab Jamun" class="item-image">
-                        <div class="item-content">
-                            <div class="item-header">
-                                <h4 class="item-title">Gulab Jamun</h4>
-                                <span class="item-price">₹70</span>
-                            </div>
-                            <p class="item-description">Soft sweet balls soaked in sugar syrup.</p>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSCPkJXsWwQ2ndpGsrC_JdLs7GUzLyyV9oPg&s  " alt="Rasgulla" class="item-image">
-                        <div class="item-content">
-                            <div class="item-header">
-                                <h4 class="item-title">Rasgulla</h4>
-                                <span class="item-price">₹60</span>
-                            </div>
-                            <p class="item-description">Soft spongy balls made from chenna, soaked in sugar syrup.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Drinks -->
-            <div class="menu-category" data-category="drinks">
-                <h3 class="category-title">Drinks</h3>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9x28VQnjEiDhN_LdU9WtVLiRqZEiMNZ2iXQ&s" alt="Lassi" class="item-image">
-                        <div class="item-content">
-                            <div class="item-header">
-                                <h4 class="item-title">Lassi</h4>
-                                <span class="item-price">₹60</span>
-                            </div>
-                            <p class="item-description">Refreshing yogurt drink, sweet or salty.</p>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTknjl9tTN4Jr0T53Tq71W0gUnk6GQjQmE8xQ&s" alt="Chaas" class="item-image">
-                        <div class="item-content">
-                            <div class="item-header">
-                                <h4 class="item-title">Chaas</h4>
-                                <span class="item-price">₹40</span>
-                            </div>
-                            <p class="item-description">Cool buttermilk drink with spices and herbs.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Chef's Specials (moved to last) -->
-            <div class="menu-category" data-category="specials">
-                <h3 class="category-title">Chef's Specials</h3>
-                <div class="menu-items">
-                    <div class="menu-item special-item">
+                    <?php foreach ($grouped[$cat_key] as $item): ?>
+                    <div class="menu-item<?php if (strpos($item['tags'], 'special') !== false) echo ' special-item'; ?>">
+                        <?php if (strpos($item['tags'], 'special') !== false): ?>
                         <div class="special-badge">Chef's Special</div>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBhqV7gsGTQ6K62gRiPUl_hHWJv71zgFEXzQ&s" alt="Veg Pizza" class="item-image">
+                        <?php endif; ?>
+                        <img src="<?php echo htmlspecialchars($item['image_url']); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" class="item-image">
                         <div class="item-content">
                             <div class="item-header">
-                                <h4 class="item-title">Veg Pizza</h4>
-                                <span class="item-price">₹180</span>
+                                <h4 class="item-title"><?php echo htmlspecialchars($item['name']); ?></h4>
+                                <span class="item-price">₹<?php echo number_format($item['price'], 2); ?></span>
                             </div>
-                            <p class="item-description">Pizza topped with fresh vegetables and cheese.</p>
+                            <p class="item-description"><?php echo htmlspecialchars($item['description']); ?></p>
                             <div class="item-tags">
-                                <span class="item-tag vegetarian">Vegetarian</span>
+                                <?php if (strpos($item['tags'], 'vegetarian') !== false): ?><span class="item-tag vegetarian">Vegetarian</span><?php endif; ?>
+                                <?php if (strpos($item['tags'], 'spicy') !== false): ?><span class="item-tag spicy">Spicy</span><?php endif; ?>
+                                <?php if (strpos($item['tags'], 'gluten-free') !== false): ?><span class="item-tag gluten-free">Gluten-Free</span><?php endif; ?>
                             </div>
                         </div>
                     </div>
-                    <div class="menu-item special-item">
-                        <div class="special-badge">Chef's Special</div>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbTAhYm6Ht3VkrSkz6SyuqqOxTO_d-wstHdw&s" alt="Veg Burger" class="item-image">
-                        <div class="item-content">
-                            <div class="item-header">
-                                <h4 class="item-title">Veg Burger</h4>
-                                <span class="item-price">₹90</span>
-                            </div>
-                            <p class="item-description">Burger with a crispy vegetable patty, lettuce, and sauce.</p>
-                            <div class="item-tags">
-                                <span class="item-tag vegetarian">Vegetarian</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="menu-item special-item">
-                        <div class="special-badge">Chef's Special</div>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9gAPXlXH73q93C7Pbfz0nqaFj_QuyMwQKlg&s" alt="Pav Bhaji" class="item-image">
-                        <div class="item-content">
-                            <div class="item-header">
-                                <h4 class="item-title">Pav Bhaji</h4>
-                                <span class="item-price">₹100</span>
-                            </div>
-                            <p class="item-description">Spicy mixed vegetable curry served with soft bread rolls.</p>
-                            <div class="item-tags">
-                                <span class="item-tag vegetarian">Vegetarian</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="menu-item special-item">
-                        <div class="special-badge">Chef's Special</div>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpjFGWN5et2F4-yvry10ykzf_gasFofsCWUg&s" alt="Veg Hakka Noodles" class="item-image">
-                        <div class="item-content">
-                            <div class="item-header">
-                                <h4 class="item-title">Veg Hakka Noodles</h4>
-                                <span class="item-price">₹120</span>
-                            </div>
-                            <p class="item-description">Stir-fried noodles with vegetables and sauces.</p>
-                            <div class="item-tags">
-                                <span class="item-tag vegetarian">Vegetarian</span>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
+            <?php
+                endif;
+            endforeach;
+            ?>
         </div>
     </section>
+
+    <!-- Removed duplicate table-style menu section -->
 </div>
     <script>
         // Menu filtering functionality
