@@ -11,8 +11,8 @@ include('./db.php');
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Debug: Show POST data
-    echo '<pre>POST DATA: '; print_r($_POST); echo '</pre>';
+    // Debug: Show POST data (uncomment for debugging)
+    // echo '<pre>POST DATA: '; print_r($_POST); echo '</pre>';
 
     $name   = isset($_POST['name']) ? htmlspecialchars(trim($_POST['name'])) : '';
     $email = isset($_POST['email']) ? filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL) : '';
@@ -34,10 +34,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sssss", $name, $email, $phone, $subject, $message);
 
     if ($stmt->execute()) {
-        echo "<b>Success:</b> Data inserted into enquiry table.";
+        echo "<b>Success:</b> Your enquiry has been submitted.";
     } else {
-        echo "<b>Error:</b> " . $stmt->error;
-    }   
+        // If error is about missing table, give a hint
+        if (strpos($stmt->error, 'enquiry') !== false) {
+            echo "<b>Error:</b> Table 'enquiry' does not exist. Please create the table in your database.";
+        } else {
+            echo "<b>Error:</b> " . $stmt->error;
+        }
+    }
 
     $stmt->close();
 }
