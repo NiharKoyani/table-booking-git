@@ -13,9 +13,11 @@ CREATE TABLE `users` (
   `phone_number` VARCHAR(20) NOT NULL,
   `email` VARCHAR(255) NOT NULL UNIQUE,
   `password` VARCHAR(255) NOT NULL,
+  `usertype` ENUM('user','admin') NOT NULL DEFAULT 'user',
   `birthdate` DATE,
   PRIMARY KEY (`id`)
 );
+
 ```
 
 2. reservation
