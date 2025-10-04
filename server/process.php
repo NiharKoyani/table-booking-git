@@ -94,13 +94,13 @@ include('./db.php');
     }
 
     // Prepare statement to fetch user
-    $stmt = $conn->prepare("SELECT id, password, first_name, last_name, phone_number FROM users WHERE email = ?");
+    $stmt = $conn->prepare("SELECT id, password, first_name, last_name, phone_number, usertype FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows == 1) {
-        $stmt->bind_result($userId, $hashedPassword,$first_name,$last_name,$phone_number);
+        $stmt->bind_result($userId, $hashedPassword,$first_name,$last_name,$phone_number,$usertype);
         $stmt->fetch();
         if (password_verify($password, $hashedPassword)) {
             // Login successful
@@ -110,8 +110,13 @@ include('./db.php');
                     'email' => $email,
                     'phoneNumber'=> $phone_number,
                 ];
-            header("Location: ../");
-            exit();
+            if($usertype === 'admin'){
+                header("Location: ../pages/admin.php");
+                exit();
+            }else{
+                header("Location: ../");
+                exit();
+            }
         } else {
             $_SESSION['login_error'] = "Invalid password.";
             header("Location: ../login.php");
